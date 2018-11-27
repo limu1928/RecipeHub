@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     public void startButtonOnClick(View view){
         EditText editText = findViewById(R.id.loginNameEditText);
         String userName = editText.getText().toString();
-        Intent intent = new Intent(this,HomeActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
 
         intent.putExtra(UserEntry.USER_NAME,userName);
 
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     public void startAsAnonymousButtonOnClick(View view){
-        Intent intent = new Intent(this,HomeActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
 
         intent.putExtra(UserEntry.USER_NAME,UserEntry.ANONYMOUS_USER);
 
