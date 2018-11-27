@@ -1,14 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_home_fragment" />
+        android:layout_height="match_parent">
+        <!--android:scrollbars="vertical"-->
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="0dp"
+                android:layout_height="39dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/hottestThisWeekImageView"
+                android:layout_width="285dp"
+                android:layout_height="128dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hottest_this_weak"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+                />
+
+            <ImageView
+                android:id="@+id/newlyAddedImageView"
+                android:layout_width="285dp"
+                android:layout_height="76dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/newly_added"
+                app:layout_constraintEnd_toEndOf="@+id/hottestThisWeekImageView"
+                app:layout_constraintStart_toStartOf="@+id/hottestThisWeekImageView"
+                app:layout_constraintTop_toBottomOf="@+id/hottestThisWeekImageView" />
+
+            <ImageView
+                android:id="@+id/cocktailImageView"
+                android:layout_width="114dp"
+                android:layout_height="148dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cocktail"
+                app:layout_constraintStart_toStartOf="@+id/newlyAddedImageView"
+                app:layout_constraintTop_toBottomOf="@+id/newlyAddedImageView" />
+
+            <ImageView
+                android:id="@+id/highestRatedImageView"
+                android:layout_width="162dp"
+                android:layout_height="148dp"
+                android:layout_marginTop="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/highest_rated"
+                app:layout_constraintEnd_toEndOf="@+id/newlyAddedImageView"
+                app:layout_constraintTop_toBottomOf="@+id/newlyAddedImageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:text="Hottest This Week!"
+                app:layout_constraintStart_toStartOf="@+id/hottestThisWeekImageView"
+                app:layout_constraintTop_toBottomOf="@+id/hottestThisWeekImageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:text="Cocktail!"
+                app:layout_constraintStart_toStartOf="@+id/cocktailImageView"
+                app:layout_constraintTop_toBottomOf="@+id/cocktailImageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:text="Newly Added!"
+                app:layout_constraintStart_toStartOf="@+id/newlyAddedImageView"
+                app:layout_constraintTop_toBottomOf="@+id/newlyAddedImageView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:text="Highest Rated!"
+                app:layout_constraintStart_toStartOf="@+id/highestRatedImageView"
+                app:layout_constraintTop_toBottomOf="@+id/highestRatedImageView" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>

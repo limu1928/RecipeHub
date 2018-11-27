@@ -9,7 +9,13 @@ import android.widget.Toast;
  */
 public class UIUtils {
 
+    static Toast mToast;
+
     public static void showToast(Context context, String toast){
-        Toast.makeText(context,toast,Toast.LENGTH_SHORT).show();
+        if(mToast!=null){
+            mToast.cancel();
+        }
+        mToast = Toast.makeText(context,toast,Toast.LENGTH_SHORT);
+        mToast.show();
     }
 }
