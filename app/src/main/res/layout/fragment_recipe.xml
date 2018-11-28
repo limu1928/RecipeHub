@@ -78,6 +78,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ingredientsRecyclerView" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/reviewsRecyclerView"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
