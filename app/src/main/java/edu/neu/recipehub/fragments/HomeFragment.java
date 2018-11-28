@@ -1,7 +1,6 @@
 package edu.neu.recipehub.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import edu.neu.recipehub.R;
+import edu.neu.recipehub.objects.Recipe;
 import edu.neu.recipehub.utils.UIUtils;
 
 /**
@@ -21,6 +21,7 @@ import edu.neu.recipehub.utils.UIUtils;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -61,6 +62,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof  OnFragmentInteractionListener){
+             mListener = (OnFragmentInteractionListener) context;
+        }
     }
 
     @Override
@@ -71,6 +75,7 @@ public class HomeFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
+        void changeFragmentInHomeFragment(Fragment fragment);
     }
 
     private void initializeImageViews(){
@@ -83,6 +88,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 UIUtils.showToast(getActivity(),"Hottest This Week!");
+                // Change the fragment in main activity to ...
+                mListener.changeFragmentInHomeFragment(RecipeFragment.newInstance(Recipe.getDummyRecipe()));
             }
         });
         mNewlyAddedImageView.setOnClickListener(new View.OnClickListener() {

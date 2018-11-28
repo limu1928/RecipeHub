@@ -15,9 +15,11 @@ import edu.neu.recipehub.fragments.CommunicationFragment;
 import edu.neu.recipehub.fragments.FavoriteFragment;
 import edu.neu.recipehub.fragments.ForksFragment;
 import edu.neu.recipehub.fragments.HomeFragment;
+import edu.neu.recipehub.fragments.RecipeFragment;
 import edu.neu.recipehub.fragments.UserCenterFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+    implements HomeFragment.OnFragmentInteractionListener {
 
     private Context mContext;
     private Fragment fragment;
@@ -67,4 +69,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    private void changeCurrentFragment(Fragment fragment){
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragmentFrameLayout, fragment).commit();
+    }
+
+
+    @Override
+    public void changeFragmentInHomeFragment(Fragment fragment) {
+        changeCurrentFragment(fragment);
+    }
 }
