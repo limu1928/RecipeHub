@@ -1,19 +1,25 @@
 package edu.neu.recipehub.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.neu.recipehub.R;
 import edu.neu.recipehub.objects.Recipe;
+import edu.neu.recipehub.objects.Review;
+import edu.neu.recipehub.objects.User;
+import edu.neu.recipehub.utils.UIUtils;
 
 public class RecipeFragment extends Fragment {
 
@@ -34,7 +40,12 @@ public class RecipeFragment extends Fragment {
 
     private RecyclerView mInstructionsRecyclerView;
 
+    private TextView mAddReviewTextView;
+
+    private ReviewsAdapter mReviewsAdapter;
+
     private RecyclerView mReviewsRecyclerView;
+
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -111,13 +122,47 @@ public class RecipeFragment extends Fragment {
 
         mInstructionsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
+        mAddReviewTextView = getView().findViewById(R.id.addReviewTextView);
+
+        mAddReviewTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAddReviewDialog();
+            }
+        });
+
         mReviewsRecyclerView = getView().findViewById(R.id.reviewsRecyclerView);
 
-        ReviewsAdapter reviewsAdapter = new ReviewsAdapter(mRecipe.mReviews);
+        mReviewsAdapter = new ReviewsAdapter(mRecipe.mReviews);
 
-        mReviewsRecyclerView.setAdapter(reviewsAdapter);
+        mReviewsRecyclerView.setAdapter(mReviewsAdapter);
 
         mReviewsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    private void showAddReviewDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        alert.setTitle("Input Review");
+        alert.setMessage("Enter your review below: ");
+        final EditText input = new EditText (getActivity());
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String reviewString = input.getText().toString();
+                mRecipe.mReviews.add(new Review(User.getDummyUser(),reviewString));
+//                mReviewsAdapter.notifyItemInserted(mRecipe.mReviews.size());
+                mReviewsRecyclerView.setAdapter(new ReviewsAdapter(mRecipe.mReviews));
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+        alert.show();
     }
 
     public interface OnFragmentInteractionListener {

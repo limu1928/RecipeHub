@@ -44,49 +44,109 @@
                 app:layout_constraintTop_toBottomOf="@+id/recipePhotoImageView" />
 
             <TextView
+                android:id="@+id/descriptionTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Description"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView" />
+
+            <TextView
                 android:id="@+id/recipeDescriptionTextView"
                 android:layout_width="260dp"
-                android:layout_height="0dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipeNameTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionTitleTextView" />
+
+            <TextView
+                android:id="@+id/ingredientsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Ingredients"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/ingredientsRecyclerView"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsTitleTextView" >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/instructionsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Instructions"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsRecyclerView" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/instructionsRecyclerView"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ingredientsRecyclerView" />
+                app:layout_constraintTop_toBottomOf="@+id/instructionsTitleTextView" >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/reviewsTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Reviews"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructionsRecyclerView" />
+
+            <TextView
+                android:id="@+id/addReviewTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="+Add Review"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/instructionsRecyclerView" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/reviewsRecyclerView"
                 android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructionsRecyclerView" />
+                app:layout_constraintTop_toBottomOf="@+id/reviewsTitleTextView" />
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

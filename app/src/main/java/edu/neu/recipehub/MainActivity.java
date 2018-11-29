@@ -9,36 +9,43 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import edu.neu.recipehub.fragments.CommunicationFragment;
 import edu.neu.recipehub.fragments.FavoriteFragment;
 import edu.neu.recipehub.fragments.ForksFragment;
 import edu.neu.recipehub.fragments.HomeFragment;
-import edu.neu.recipehub.fragments.RecipeFragment;
 import edu.neu.recipehub.fragments.UserCenterFragment;
+import edu.neu.recipehub.objects.User;
+import edu.neu.recipehub.users.UserEntry;
 
 public class MainActivity extends AppCompatActivity
-    implements HomeFragment.OnFragmentInteractionListener {
+    implements HomeFragment.OnFragmentInteractionListener,
+                UserCenterFragment.OnFragmentInteractionListener{
+
+
+    public static final String USER_NAME = "userName";
+
+
+    private User mCurrentUser;
 
     private Context mContext;
-    private Fragment fragment;
-    private FragmentManager fragmentManager;
+    private Fragment mFragment;
+    private FragmentManager mFragmentManager;
     private BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getUser(getIntent().getStringExtra(UserEntry.USER_NAME));
         initializeBottomNavigationView();
     }
 
     private void initializeBottomNavigationView(){
-        fragmentManager = getSupportFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
-        // Make the activity display default fragment.
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        // Make the activity display default mFragment.
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.replace(R.id.fragmentFrameLayout, HomeFragment.newInstance()).commit();
 
         mBottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -47,37 +54,45 @@ public class MainActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.homeMenuItem:
-                        fragment = HomeFragment.newInstance();
+                        mFragment = HomeFragment.newInstance();
                         break;
                     case R.id.favouriteMenuItem:
-                        fragment = FavoriteFragment.newInstance();
+                        mFragment = FavoriteFragment.newInstance();
                         break;
                     case R.id.forksMenuItem:
-                        fragment = ForksFragment.newInstance();
+                        mFragment = ForksFragment.newInstance();
                         break;
                     case R.id.communicationMenuItem:
-                        fragment = CommunicationFragment.newInstance();
+                        mFragment = CommunicationFragment.newInstance();
                         break;
                     case R.id.usercenterMenuItem:
-                        fragment = UserCenterFragment.newInstance();
+                        mFragment = UserCenterFragment.newInstance(mCurrentUser);
                         break;
                 }
-                final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragmentFrameLayout, fragment).commit();
+                final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.replace(R.id.fragmentFrameLayout, mFragment).commit();
                 return true;
             }
         });
     }
 
-
     private void changeCurrentFragment(Fragment fragment){
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.replace(R.id.fragmentFrameLayout, fragment).commit();
+    }
+
+    private void getUser(String userName){
+        mCurrentUser = new User(userName);
     }
 
 
     @Override
     public void changeFragmentInHomeFragment(Fragment fragment) {
         changeCurrentFragment(fragment);
+    }
+
+    @Override
+    public void logOut() {
+        finish();
     }
 }
