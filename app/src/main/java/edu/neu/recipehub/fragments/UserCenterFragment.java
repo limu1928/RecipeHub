@@ -1,6 +1,8 @@
 package edu.neu.recipehub.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -89,8 +91,30 @@ public class UserCenterFragment extends Fragment {
         mLogOutImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showLogOutDialog();
+            }
+        });
+    }
+
+    private void showLogOutDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+        dialogBuilder.setTitle("Log Out");
+        dialogBuilder.setMessage("Are you sure to log out?");
+
+        dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 mListener.logOut();
             }
         });
+
+        dialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialogBuilder.show();
     }
 }

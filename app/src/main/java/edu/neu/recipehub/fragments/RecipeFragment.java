@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,11 +16,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.neu.recipehub.MainActivity;
 import edu.neu.recipehub.R;
+import edu.neu.recipehub.fragments.adapters.IngredientsAdapter;
+import edu.neu.recipehub.fragments.adapters.InstructionsAdapter;
+import edu.neu.recipehub.fragments.adapters.RecipePhotosAdapter;
+import edu.neu.recipehub.fragments.adapters.ReviewsAdapter;
 import edu.neu.recipehub.objects.Recipe;
 import edu.neu.recipehub.objects.Review;
 import edu.neu.recipehub.objects.User;
-import edu.neu.recipehub.utils.UIUtils;
 
 public class RecipeFragment extends Fragment {
 
@@ -31,6 +39,8 @@ public class RecipeFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private ImageView mRecipePhotoImageView;
+
+    private RecyclerView mRecipePhotosRecyclerView;
 
     private TextView mRecipeNameTextView;
 
@@ -96,7 +106,20 @@ public class RecipeFragment extends Fragment {
     }
 
     public void initializeView(){
-        mRecipePhotoImageView = getView().findViewById(R.id.recipePhotoImageView);
+//        mRecipePhotoImageView = getView().findViewById(R.id.recipePhotoImageView);
+
+        mRecipePhotosRecyclerView = getView().findViewById(R.id.recipePhotosRecyclerView);
+
+        List<Integer> dummyList = new ArrayList<>();
+
+        dummyList.add(R.drawable.hottest_this_weak);
+        dummyList.add(R.drawable.highest_rated);
+
+        RecipePhotosAdapter recipePhotosAdapter = new RecipePhotosAdapter(dummyList);
+
+        mRecipePhotosRecyclerView.setAdapter(recipePhotosAdapter);
+
+        mRecipePhotosRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutCompat.HORIZONTAL,false));
 
         mRecipeNameTextView = getView().findViewById(R.id.recipeNameTextView);
 
@@ -150,7 +173,7 @@ public class RecipeFragment extends Fragment {
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String reviewString = input.getText().toString();
-                mRecipe.mReviews.add(new Review(User.getDummyUser(),reviewString));
+                mRecipe.mReviews.add(new Review(((MainActivity)getActivity()).getmCurrentUser(),reviewString));
 //                mReviewsAdapter.notifyItemInserted(mRecipe.mReviews.size());
                 mReviewsRecyclerView.setAdapter(new ReviewsAdapter(mRecipe.mReviews));
 

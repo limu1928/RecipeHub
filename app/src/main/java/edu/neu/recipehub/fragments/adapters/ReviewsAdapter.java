@@ -1,6 +1,5 @@
-package edu.neu.recipehub.fragments;
+package edu.neu.recipehub.fragments.adapters;
 
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
