@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.neu.recipehub.R;
+import edu.neu.recipehub.objects.Review;
 
 public class InstructionsAdapter extends RecyclerView.Adapter<InstructionsAdapter.ViewHolder> {
     private List<String> mInstructions;

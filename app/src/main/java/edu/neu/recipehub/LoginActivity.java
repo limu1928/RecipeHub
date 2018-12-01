@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+
 import edu.neu.recipehub.users.UserEntry;
 
 public class LoginActivity extends AppCompatActivity {

@@ -10,14 +10,6 @@ import android.view.ViewGroup;
 
 import edu.neu.recipehub.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ForksFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ForksFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ForksFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +20,7 @@ public class ForksFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private HomeFragment.OnFragmentInteractionListener mListener;
 
     public ForksFragment() {
         // Required empty public constructor
@@ -63,16 +55,13 @@ public class ForksFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_fork, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if (context instanceof HomeFragment.OnFragmentInteractionListener){
+            mListener = (HomeFragment.OnFragmentInteractionListener) context;
+        }
+        mListener.changeFragmentInHomeFragment(DescriptionFragment.newInstance());
     }
 
     @Override

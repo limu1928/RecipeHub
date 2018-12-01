@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "addBtnWidth">130dp</dimen>
+    <dimen name = "imageWindowWidth">250dp</dimen>
+    <dimen name = "imageWindowHeight">185dp</dimen>
+    <dimen name = "ingredientBoxWidth">100dp</dimen>
+    <dimen name = "descriptionBoxWidth">200dp</dimen>
+    <dimen name = "descriptionBoxHeight">173dp</dimen>
+    <dimen name = "instructionBoxWidth">250dp</dimen>
+    <dimen name = "instructionBoxHeight">75dp</dimen>
+    <dimen name = "recipeNameSize">20sp</dimen>
+    <dimen name = "recipeIcon">90dp</dimen>
+    <dimen name="recipeCreatorSize">15sp</dimen>
+</resources>

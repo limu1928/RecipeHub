@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import edu.neu.recipehub.R;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
     private ImageView mNewlyAddedImageView;
     private ImageView mCocktailImageView;
     private ImageView mHighestRatedImageView;
+    private EditText mSearchBox;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -56,7 +58,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        initializeImageViews();
+        initializeViews();
     }
 
     @Override
@@ -78,11 +80,13 @@ public class HomeFragment extends Fragment {
         void changeFragmentInHomeFragment(Fragment fragment);
     }
 
-    private void initializeImageViews(){
+    private void initializeViews(){
         mHottestThisWeekImageView = getView().findViewById(R.id.hottestThisWeekImageView);
         mNewlyAddedImageView = getView().findViewById(R.id.newlyAddedImageView);
         mCocktailImageView = getView().findViewById(R.id.cocktailImageView);
         mHighestRatedImageView = getView().findViewById(R.id.highestRatedImageView);
+        mSearchBox = getView().findViewById(R.id.searchBox);
+
 
         mHottestThisWeekImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,5 +114,12 @@ public class HomeFragment extends Fragment {
                 UIUtils.showToast(getActivity(),"Highest Rated!");
             }
         });
+        mSearchBox.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                mListener.changeFragmentInHomeFragment(SearchFragment.newInstance());
+            }
+        });
+
     }
 }

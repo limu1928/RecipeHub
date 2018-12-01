@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.InstructionFragment"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id = "@+id/instructionParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id = "@+id/instructionUpload0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <EditText
+                    android:id="@+id/insBox"
+                    android:layout_width="@dimen/instructionBoxWidth"
+                    android:layout_height="@dimen/instructionBoxHeight"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textImeMultiLine"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/insAddBtn"
+                    android:layout_width="@dimen/addBtnWidth"
+                    android:layout_height="wrap_content"
+                    android:text="Add More" />
+
+                <Button
+                    android:id="@+id/insRemoveBtn"
+                    android:layout_width="@dimen/addBtnWidth"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Remove" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/publishBtn"
+                android:layout_width="@dimen/addBtnWidth"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:enabled="false"
+                android:text="PUBLISH!" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+

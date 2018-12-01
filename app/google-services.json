@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1025693468873",
+    "firebase_url": "https://recipehub-2fe1c.firebaseio.com",
+    "project_id": "recipehub-2fe1c",
+    "storage_bucket": "recipehub-2fe1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025693468873:android:7ecd89c1d400a83e",
+        "android_client_info": {
+          "package_name": "edu.neu.recipehub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1025693468873-kuj1s0cv05rggp40brjvf4c0kl6r0nko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.neu.recipehub",
+            "certificate_hash": "10daaeacd3cf5060144ce4425e86631f03fa5e92"
+          }
+        },
+        {
+          "client_id": "1025693468873-k5dvbm4mtimbneru51n3o1a22njjm2uv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNDrEG7eau3uQ3pzNe_kyXX6T30S8NMb0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1025693468873-k5dvbm4mtimbneru51n3o1a22njjm2uv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

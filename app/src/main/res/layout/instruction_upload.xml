@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/insBox"
+            android:layout_width="@dimen/instructionBoxWidth"
+            android:layout_height="@dimen/instructionBoxHeight"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textMultiLine"/>
+
+</LinearLayout>
+
+
+

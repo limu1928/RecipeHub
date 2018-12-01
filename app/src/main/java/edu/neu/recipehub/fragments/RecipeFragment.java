@@ -16,10 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.neu.recipehub.MainActivity;
+
+
 import edu.neu.recipehub.R;
 import edu.neu.recipehub.fragments.adapters.IngredientsAdapter;
 import edu.neu.recipehub.fragments.adapters.InstructionsAdapter;
@@ -56,6 +59,9 @@ public class RecipeFragment extends Fragment {
 
     private RecyclerView mReviewsRecyclerView;
 
+    private List<Uri> photoUri;
+
+
 
     public RecipeFragment() {
         // Required empty public constructor
@@ -63,6 +69,7 @@ public class RecipeFragment extends Fragment {
 
     public static RecipeFragment newInstance(Recipe recipe) {
         RecipeFragment fragment = new RecipeFragment();
+
         Bundle args = new Bundle();
 
         args.putSerializable(RECIPE,recipe);

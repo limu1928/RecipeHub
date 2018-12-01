@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.algolia.search.saas.Client;
+
 import edu.neu.recipehub.fragments.CommunicationFragment;
 import edu.neu.recipehub.fragments.FavoriteFragment;
 import edu.neu.recipehub.fragments.ForksFragment;
@@ -29,8 +31,13 @@ public class MainActivity extends AppCompatActivity
             UserCenterFragment.OnFragmentInteractionListener{
 
 
-    public static final String USER_NAME = "userName";
+
+    //public static final String USER_NAME = "userName";
     private static final float SHAKE_THRESHOLD = 1;
+
+    public static  String USER_NAME;
+
+
 
     private User mCurrentUser;
 
@@ -96,6 +103,7 @@ public class MainActivity extends AppCompatActivity
 
     private void getUser(String userName){
         mCurrentUser = new User(userName);
+        USER_NAME = userName;
     }
 
     private void showDialog(){
