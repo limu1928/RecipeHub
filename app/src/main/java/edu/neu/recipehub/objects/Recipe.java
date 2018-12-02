@@ -18,6 +18,10 @@ public class Recipe implements Serializable {
     public List<Review> mReviews;
     public List<String> uris;
 
+    public Recipe(){
+
+    }
+
     public Recipe(String userName,String mRecipeName, String mDescription, Map<String, String> mIngredients,
                   List<String> mInstruction, List<Review> mReviews, List<String> photoUri) {
         this.userName = userName;

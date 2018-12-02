@@ -34,7 +34,8 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public ReviewsAdapter(List<Review> reviews) {
-        mReviews = new ArrayList<>(reviews);
+        if(reviews == null) mReviews = new ArrayList<>();
+        else mReviews = new ArrayList<>(reviews);
     }
 
     // Create new views (invoked by the layout manager)

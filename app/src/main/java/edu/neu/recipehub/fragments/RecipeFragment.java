@@ -117,12 +117,7 @@ public class RecipeFragment extends Fragment {
 
         mRecipePhotosRecyclerView = getView().findViewById(R.id.recipePhotosRecyclerView);
 
-        List<Integer> dummyList = new ArrayList<>();
-
-        dummyList.add(R.drawable.hottest_this_weak);
-        dummyList.add(R.drawable.highest_rated);
-
-        RecipePhotosAdapter recipePhotosAdapter = new RecipePhotosAdapter(dummyList);
+        RecipePhotosAdapter recipePhotosAdapter = new RecipePhotosAdapter(mRecipe.uris);
 
         mRecipePhotosRecyclerView.setAdapter(recipePhotosAdapter);
 

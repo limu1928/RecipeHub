@@ -1,11 +1,16 @@
 package edu.neu.recipehub.fragments.adapters;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +19,7 @@ import java.util.Map;
 import edu.neu.recipehub.R;
 
 public class RecipePhotosAdapter extends RecyclerView.Adapter<RecipePhotosAdapter.ViewHolder> {
-    private List<Integer> mPhotosId;
+    private List<String> mPhotoUri;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -29,8 +34,8 @@ public class RecipePhotosAdapter extends RecyclerView.Adapter<RecipePhotosAdapte
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecipePhotosAdapter(List<Integer> photosId) {
-        mPhotosId = photosId;
+    public RecipePhotosAdapter(List<String> mPhotoUri) {
+        this.mPhotoUri = mPhotoUri;
     }
 
     // Create new views (invoked by the layout manager)
@@ -50,14 +55,13 @@ public class RecipePhotosAdapter extends RecyclerView.Adapter<RecipePhotosAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        int id = mPhotosId.get(position);
-        holder.mPhotoImageView.setImageResource(id);
+        Picasso.get().load(mPhotoUri.get(position)).fit().into(holder.mPhotoImageView);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mPhotosId.size();
+        return mPhotoUri.size();
     }
 }
 
